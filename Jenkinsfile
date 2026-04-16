@@ -4,7 +4,7 @@ pipeline {
     stages {
         stage('Clone Code') {
             steps {
-                git 'https://github.com/your-repo/devops-project.git'
+                git 'https://github.com/CloudWithShan/devops-project.git'
             }
         }
 
