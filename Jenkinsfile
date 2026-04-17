@@ -2,11 +2,6 @@ pipeline {
     agent any
 
     stages {
-        stage('Clone Code') {
-            steps {
-                git 'https://github.com/CloudWithShan/devops-project.git'
-            }
-        }
 
         stage('Build Docker Image') {
             steps {
@@ -14,10 +9,15 @@ pipeline {
             }
         }
 
-        stage('Run Containers') {
+        stage('Stop Containers') {
             steps {
                 sh 'docker-compose down || true'
-                sh 'docker-compose up -d'
+            }
+        }
+
+        stage('Run Containers') {
+            steps {
+                sh 'docker-compose up -d --build'
             }
         }
     }
